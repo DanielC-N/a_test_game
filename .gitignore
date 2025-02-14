@@ -5,7 +5,7 @@ src/__pycache__/
 bbb.sh
 
 # Ignore Cython-generated files that are not needed
-*.c
+src/**/*.c
 
 # Ignore Python cache
 __pycache__/
@@ -13,8 +13,8 @@ __pycache__/
 
 # Ignore build artifacts
 /build/
-dist/
-*.egg-info/
+*.log
+*.tmp
 
 # Ignore Windows-specific files
 *.exe
@@ -25,10 +25,3 @@ dist/
 
 # Ignore Linux-specific files
 *.out
-
-# Ignore logs & temp files
-*.log
-*.tmp
-
-# Ignore raw Python files
-src/**/*.py

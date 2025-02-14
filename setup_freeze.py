@@ -17,6 +17,7 @@ def find_extra_files(directory):
 # Extra files to include (Modify this if you have more folders)
 include_files = [
   THE_LOGO_WIN, THE_LOGO_LINUX,   # Ensure logo is included
+  "src/", # Ensure compiled Cython files are included
 ] + find_extra_files("assets")  # Include all files from 'assets' directory
 
 # Dependencies
