@@ -2,7 +2,8 @@ import os
 import sys
 from cx_Freeze import setup, Executable
 
-THE_LOGO="assets/logo.ico"
+THE_LOGO_WIN="assets/logo.ico"
+THE_LOGO_LINUX="assets/logo.png"
 
 # Automatically detect all files in the 'assets' directory
 def find_extra_files(directory):
@@ -15,7 +16,7 @@ def find_extra_files(directory):
 
 # Extra files to include (Modify this if you have more folders)
 include_files = [
-  THE_LOGO,  # Ensure logo is included
+  THE_LOGO_WIN, THE_LOGO_LINUX,   # Ensure logo is included
 ] + find_extra_files("assets")  # Include all files from 'assets' directory
 
 # Dependencies
@@ -27,7 +28,7 @@ exe = Executable(
     script="main.py",
     base="Win32GUI" if sys.platform == "win32" else None,
     target_name="game",
-    icon=THE_LOGO
+    icon=THE_LOGO_LINUX if sys.platform != "win32" else THE_LOGO_WIN
 )
 
 # Setup configuration
