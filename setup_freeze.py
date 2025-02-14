@@ -25,10 +25,10 @@ packages = ["pygame"]
 
 # Define the executable file
 exe = Executable(
-    script="main.py",
+    script="start.py",  # Load compiled Cython modules
     base="Win32GUI" if sys.platform == "win32" else None,
     target_name="game",
-    icon=THE_LOGO_LINUX if sys.platform != "win32" else THE_LOGO_WIN
+    icon="assets/logo.ico" if sys.platform == "win32" else "assets/logo.png",
 )
 
 # Setup configuration
@@ -44,5 +44,5 @@ setup(
             "include_msvcr": True  # Ensure Windows users get runtime DLLs
         }
     },
-    executables=[exe]
+    executables=[exe],
 )

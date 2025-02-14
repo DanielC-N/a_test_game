@@ -1,3 +1,30 @@
-build/
+# Ignore all Python source files
+src/**/*.py
+src/**/*.pyc
+src/__pycache__/
+
+# Ignore Cython-generated files that are not needed
+*.c
+
+# Ignore Python cache
+__pycache__/
+*.pyo
+
+# Ignore build artifacts
+/build/
 dist/
-*.spec
+*.egg-info/
+
+# Ignore Windows-specific files
+*.exe
+*.dll
+
+# Ignore macOS-specific files
+.DS_Store
+
+# Ignore Linux-specific files
+*.out
+
+# Ignore logs & temp files
+*.log
+*.tmp

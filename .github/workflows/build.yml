@@ -30,7 +30,7 @@ jobs:
           python -m pip install -r requirements.txt
 
       - name: Build Executable
-        run: python setup.py build
+        run: python setup_freeze.py build
 
       - name: Upload Executable
         uses: actions/upload-artifact@v4
