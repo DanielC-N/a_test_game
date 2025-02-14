@@ -2,6 +2,7 @@
 src/**/*.py
 src/**/*.pyc
 src/__pycache__/
+bbb.sh
 
 # Ignore Cython-generated files that are not needed
 *.c
@@ -28,3 +29,6 @@ dist/
 # Ignore logs & temp files
 *.log
 *.tmp
+
+# Ignore raw Python files
+src/**/*.py
