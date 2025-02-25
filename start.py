@@ -2,14 +2,17 @@ import os
 import sys
 import importlib
 
-# Add the "src" folder to Python’s module search path
-sys.path.insert(0, os.path.abspath("src"))
+# Add "compiled/" directory to Python’s search path
+sys.path.insert(0, os.path.abspath("compiled"))
 
-# Try importing the compiled Cython module
+# Try to import the compiled "main" module
 try:
     main = importlib.import_module("main")
 except ModuleNotFoundError:
-    raise ImportError("Failed to load the compiled module. Make sure you ran setup_c.py.")
+    raise ImportError("Failed to load the compiled game. Make sure you compiled it using setup_c.py.")
 
-# Run your game
-main.run_game()
+# Run the game
+if hasattr(main, "run_game"):
+    main.run_game()
+else:
+    raise ImportError("The function 'run_game()' is missing in the compiled module.")

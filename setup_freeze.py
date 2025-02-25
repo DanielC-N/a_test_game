@@ -2,37 +2,24 @@ import os
 import sys
 from cx_Freeze import setup, Executable
 
-THE_LOGO_WIN="assets/logo.ico"
-THE_LOGO_LINUX="assets/logo.png"
-
-# Automatically detect all files in the 'assets' directory
-def find_extra_files(directory):
-    extra_files = []
-    for folder, _, files in os.walk(directory):
-        for file in files:
-            file_path = os.path.join(folder, file)
-            extra_files.append(file_path)
-    return extra_files
-
-# Extra files to include (Modify this if you have more folders)
+# Define game assets and compiled modules to include
 include_files = [
-  THE_LOGO_WIN, THE_LOGO_LINUX,   # Ensure logo is included
-  "src/", # Ensure compiled Cython files are included
-] + find_extra_files("assets")  # Include all files from 'assets' directory
+    ("assets/", "assets/"),   # Include all assets
+    ("compiled/", "compiled/"),  # Include all compiled Cython files
+]
 
 # Dependencies
 excludes = ["tkinter", "unittest"]
 packages = ["pygame"]
 
-# Define the executable file
+# Define the executable
 exe = Executable(
-    script="start.py",  # Load compiled Cython modules
+    script="start.py",  # Entry point for the compiled game
     base="Win32GUI" if sys.platform == "win32" else None,
     target_name="game",
     icon="assets/logo.ico" if sys.platform == "win32" else "assets/logo.png",
 )
 
-# Setup configuration
 setup(
     name="My Little Game",
     version="1.0",
