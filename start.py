@@ -2,11 +2,11 @@ import os
 import sys
 import importlib
 
-# Detect if running inside a frozen binary (cx_Freeze)
+# Detect if running inside a frozen executable (cx_Freeze)
 if getattr(sys, 'frozen', False):
-    base_dir = sys._MEIPASS  # Path where cx_Freeze extracts files
+    base_dir = os.path.dirname(sys.executable)  # cx_Freeze extracts files here
 else:
-    base_dir = os.path.abspath("compiled")
+    base_dir = os.path.abspath("compiled")  # Running normally
 
 sys.path.insert(0, base_dir)
 
