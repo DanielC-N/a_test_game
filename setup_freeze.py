@@ -2,12 +2,13 @@ import os
 import sys
 from cx_Freeze import setup, Executable
 
-# Detect all compiled .so/.pyd files
+# Detect all compiled .so/.pyd files in compiled/
 compiled_files = [
-    os.path.join("compiled", file) for file in os.listdir("compiled") if file.endswith((".so", ".pyd"))
+    (os.path.join("compiled", file), file)
+    for file in os.listdir("compiled") if file.endswith((".so", ".pyd"))
 ]
 
-# Include assets and compiled Cython files
+# Include compiled modules and assets
 include_files = [
     ("assets/", "assets/"),  # Include game assets
 ] + compiled_files  # Add compiled modules
