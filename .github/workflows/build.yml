@@ -32,8 +32,11 @@ jobs:
       - name: Compile Cython Files
         run: python setup_c.py build_ext --inplace
 
-      - name: Ensure Compiled Files Are Present
-        run: ls -la compiled/
+      - name: Verify Compiled Files Exist
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          echo "Checking compiled files..."
+          ls -la compiled/
 
       - name: Build Executable (Linux)
         if: matrix.os == 'ubuntu-latest'

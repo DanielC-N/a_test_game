@@ -2,11 +2,15 @@ import os
 import sys
 from cx_Freeze import setup, Executable
 
-# Define game assets and compiled modules to include
-include_files = [
-    ("assets/", "assets/"),   # Include all assets
-    ("compiled/", "compiled/"),  # Include all compiled Cython files
+# Detect all compiled .so/.pyd files
+compiled_files = [
+    os.path.join("compiled", file) for file in os.listdir("compiled") if file.endswith((".so", ".pyd"))
 ]
+
+# Include assets and compiled Cython files
+include_files = [
+    ("assets/", "assets/"),  # Include game assets
+] + compiled_files  # Add compiled modules
 
 # Dependencies
 excludes = ["tkinter", "unittest"]
@@ -14,7 +18,7 @@ packages = ["pygame"]
 
 # Define the executable
 exe = Executable(
-    script="start.py",  # Entry point for the compiled game
+    script="start.py",  # Entry point
     base="Win32GUI" if sys.platform == "win32" else None,
     target_name="game",
     icon="assets/logo.ico" if sys.platform == "win32" else "assets/logo.png",
@@ -29,7 +33,7 @@ setup(
             "packages": packages,
             "excludes": excludes,
             "include_files": include_files,
-            "include_msvcr": True  # Ensure Windows users get runtime DLLs
+            "include_msvcr": True
         }
     },
     executables=[exe],
