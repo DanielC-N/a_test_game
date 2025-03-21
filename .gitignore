@@ -3,6 +3,9 @@ src/**/*.py
 src/**/*.pyc
 src/__pycache__/
 bbb.sh
+README.md
+ingest.txt
+*.zip
 
 # Ignore Cython-generated files that are not needed
 src/**/*.c
