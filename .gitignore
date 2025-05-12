@@ -9,6 +9,7 @@ ingest.txt
 *.zip
 def.py
 rooms/
+dialog/
 
 # Ignore Cython-generated files that are not needed
 src/**/*.c
