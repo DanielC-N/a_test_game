@@ -1,11 +1,14 @@
 # Ignore all Python source files
 src/**/*.py
 src/**/*.pyc
+src/*
 src/__pycache__/
 bbb.sh
 README.md
 ingest.txt
 *.zip
+def.py
+rooms/
 
 # Ignore Cython-generated files that are not needed
 src/**/*.c
